@@ -56,7 +56,9 @@ const Sidebar = () => {
             <div className="mx-2 my-2 space-y-2">
               <div className="flex items-center px-2 py-1 transition-colors duration-500 cursor-pointer hover:bg-gray-100 hover:rounded-lg group">
                 <FaTools className="mr-3" />
-                <span className="flex-1 mr-4 font-semibold text-md">Design Team</span>
+                <span className="flex-1 mr-4 font-semibold text-md">
+                  Design Team
+                </span>
                 <div className="flex items-center p-2 bg-gray-100 rounded-lg group-hover:bg-white">
                   <span className="mr-2">
                     <FaCogs className="w-5 h-6 bg-white border rounded-lg" />
@@ -67,7 +69,9 @@ const Sidebar = () => {
 
               <div className="flex items-center px-2 py-1 transition-colors duration-500 cursor-pointer hover:bg-gray-100 hover:rounded-lg group">
                 <FaBullhorn className="mr-3" />
-                <span className="flex-1 mr-4 font-semibold text-md">Marketing Team</span>
+                <span className="flex-1 mr-4 font-semibold text-md">
+                  Marketing Team
+                </span>
                 <div className="flex items-center p-2 bg-gray-100 rounded-lg group-hover:bg-white">
                   <span className="mr-2">
                     <FaCogs className="w-5 h-6 bg-white border rounded-lg" />
@@ -77,7 +81,9 @@ const Sidebar = () => {
               </div>
               <div className="flex items-center px-2 py-1 transition-colors duration-500 cursor-pointer hover:bg-gray-100 hover:rounded-lg group">
                 <LiaArrowsAltHSolid className="mr-3" />
-                <span className="flex-1 mr-4 font-semibold text-md">Development Team</span>
+                <span className="flex-1 mr-4 font-semibold text-md">
+                  Development Team
+                </span>
                 <div className="flex items-center p-2 bg-gray-100 rounded-lg group-hover:bg-white">
                   <span className="mr-2">
                     <FaCogs className="w-5 h-6 bg-white border rounded-lg" />
@@ -97,7 +103,7 @@ const Sidebar = () => {
           </div>
         </div>
       </section>
-  
+
       <div className="mx-2">
         {/* Folder Section */}
         <section className="flex items-center justify-between px-2 mt-5 font-semibold text-gray-500">
@@ -177,7 +183,7 @@ const Sidebar = () => {
             ))}
           </div>
         </section>
-      </div>        
+      </div>
 
       {/* Sidebar Footer Section */}
       <footer className="mx-2 mt-20 ">
@@ -198,9 +204,8 @@ const Sidebar = () => {
           </h1>
         </div>
 
-
-           {/* Trial and Billing */}
-           <div className="flex flex-col px-1 py-2 font-semibold bg-gray-100 rounded-lg sm:flex-row sm:items-center sm:justify-between">
+        {/* Trial and Billing */}
+        <div className="flex flex-col px-1 py-2 font-semibold bg-gray-100 rounded-lg sm:flex-row sm:items-center sm:justify-between">
           <h1 className="flex items-center gap-2 text-sm text-center sm:text-left ">
             <span className="px-2 py-1 bg-white rounded-md ">7</span> days left
             on trial

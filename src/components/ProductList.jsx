@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState, useMemo } from "react";
 import { LuMessagesSquare } from "react-icons/lu";
 import { FaPlus } from "react-icons/fa6";
 import wix from "../assets/wix.png";
@@ -8,11 +8,11 @@ import disney from "../assets/disney.png";
 import intercom from "../assets/intercom.png";
 import user from "../assets/user.png";
 import evernote from "../assets/evernote.png";
-import mailchamp from "../assets/mailchamp.png";  
+import mailchamp from "../assets/mailchamp.png";
 import google from "../assets/google.png";
 import invision from "../assets/invision.png";
 import microsoft from "../assets/microsoft.png";
-import { useSelectionContext } from '../context/SelectionContext.jsx';
+import { useSelectionContext } from "../context/SelectionContext.jsx";
 
 const categoryStyles = {
   Automation: "text-purple-800 bg-purple-200",
@@ -41,8 +41,7 @@ const products = [
   {
     id: 1,
     brand: "Wix",
-    description:
-      "Develop a Personalized fit to the authorization ",
+    description: "Develop a Personalized fit to the authorization ",
     members: [user, user, user, user, user, user],
     categories: ["Automation"],
     tags: ["#DigitalTransformation", "#onlineShopping"],
@@ -53,7 +52,8 @@ const products = [
   {
     id: 2,
     brand: "Shopify",
-    description: "Introdcued a Cloud Based project with your team it would be he best practise",
+    description:
+      "Introdcued a Cloud Based project with your team it would be he best practise",
     members: [user, user, user, user],
     categories: ["E-commerce", "B2B"],
     tags: ["#OnlineShopping", "#DigitalMarketing"],
@@ -113,7 +113,20 @@ const products = [
     id: 7,
     brand: "Google",
     description: "Offer a comprehensive cycle desgin as soon as possible",
-    members: [user, user, user, user, user, user,user,user,user,user,user,user],
+    members: [
+      user,
+      user,
+      user,
+      user,
+      user,
+      user,
+      user,
+      user,
+      user,
+      user,
+      user,
+      user,
+    ],
     categories: ["Finance", "Automation"],
     tags: ["SmartFinance", "#Workflow"],
     nextMeeting: ["in 30 minutes"],
@@ -159,15 +172,14 @@ const products = [
   },
 ];
 
-const ProductList = () => {
-
+const ProductList = ({ searchTerm }) => {
   const { addProduct, removeProduct, selectedProducts } = useSelectionContext();
-  const productCount = products.length;
+  // const productCount = products.length;
 
   const [selectAll, setSelectAll] = useState(false);
 
   const handleSelect = (product) => {
-    if (selectedProducts.some(selected => selected.id === product.id)) {
+    if (selectedProducts.some((selected) => selected.id === product.id)) {
       removeProduct(product.id);
     } else {
       addProduct(product);
@@ -177,244 +189,272 @@ const ProductList = () => {
   const handleSelectAll = () => {
     setSelectAll(!selectAll);
     if (!selectAll) {
-      products.forEach(product => addProduct(product));
+      products.forEach((product) => addProduct(product));
     } else {
-      products.forEach(product => removeProduct(product.id));
+      products.forEach((product) => removeProduct(product.id));
     }
   };
+
+  const filteredProducts = useMemo(() => {
+    const lowercasedSearchTerm = (searchTerm || "").toLowerCase();
+
+    return products.filter(
+      (product) =>
+        (product.brand?.toLowerCase() || "").includes(lowercasedSearchTerm) ||
+        (product.description?.toLowerCase() || "").includes(
+          lowercasedSearchTerm
+        ) ||
+        product.categories?.some((category) =>
+          category.toLowerCase().includes(lowercasedSearchTerm)
+        ) ||
+        false ||
+        product.tags?.some((tag) =>
+          tag.toLowerCase().includes(lowercasedSearchTerm)
+        ) ||
+        false ||
+        product.nextMeeting?.some((meeting) =>
+          meeting.toLowerCase().includes(lowercasedSearchTerm)
+        ) ||
+        false
+    );
+  }, [searchTerm, products]);
+
+
+  const productCount = filteredProducts.length || products.length;
   
   return (
     <div className="h-auto mx-2 bg-white rounded-lg font-jakarta">
       {/* body section  */}
 
-      {/* Table Section */}
-      <table className="w-auto min-w-full text-xs text-left text-black ">
-        <thead className="text-gray-400 transition-colors duration-300 bg-white border text-md hover:bg-gray-100">
-          {/* heading table row */}
-          <tr>
-            <th scope="col" className="px-3 py-3 border border-wih w-[23%]">
-              <div className="flex items-center justify-between w-full">
-                <div className="flex items-center justify-start space-x-2 ">
-                  <input
-                    id="checkbox-all-search"
-                    type="checkbox"
-                    className="w-4 h-4 rounded accent-black"
-                    checked={selectAll}
-                    onChange={handleSelectAll} 
-                  />
-                  <label htmlFor="checkbox-all-search">Brand </label>
-                </div>
-                <FaPlus />
-              </div>
-            </th>
-            <th scope="col" className="px-3 py-3 border w-[15%]">
-              Description
-            </th>
-            <th scope="col" className="px-3 py-3 border w-[17%]">
-              Members
-            </th>
-            <th scope="col" className="px-3 py-3 border w-[15%] ">
-              Categories
-            </th>
-            <th scope="col" className="px-3 py-3 borderw-[15%] ">
-              Tags
-            </th>
-            <th scope="col" className="px-3 py-3 border w-[15%] ">
-              Next meetings
-            </th>
-            <th scope="col" className="w-8 px-3 py-3 text-center border ">
-              <FaPlus />
-            </th>
-          </tr>
-
-          {/* heading table row  */}
-        </thead>
-
-        <tbody className="">
-          {products.map((product) => (
-            <tr key={product.id}
-            className={`${
-              selectedProducts.some(selected => selected.id === product.id)
-                ? "bg-gray-100"
-                : ""
-            } hover:bg-gray-100 transition-colors duration-500`}
-            >
-              <td scope="col" className="px-3 py-3 border">
-                <div className="flex items-center justify-between w-full">
-                  <div className="flex items-center justify-start space-x-2">
-                    <input
-                      id={`checkbox-${product.id}`}
-                      type="checkbox"
-                      className="w-4 h-4 rounded accent-black"
-                      checked={selectedProducts.some(selected => selected.id === product.id)}
-                      onChange={() => handleSelect(product)}
-                    />
-                    <img
-                      src={product.imgSrc}
-                      alt={product.brand}
-                      className="w-5"
-                    />
-                    <label htmlFor={`checkbox-${product.id}`}>
-                      {product.brand}
-                    </label>
-                  </div>
-                  <div className="inline-flex items-center gap-1">
-                    <LuMessagesSquare className="text-gray-500" />
-                    <span
-                      className={`min-w-[0.7rem] text-gray-500 ${
-                        product.messages === null ? "invisible" : ""
-                      }`}
-                    >
-                      {product.messages || ""}
-                    </span>
-                  </div>
-                </div>
-              </td>
-              <td scope="col" className="relative px-3 py-3 font-normal border">
-                <div className="relative group">
-                  <span className="block truncate max-w-44">
-                    {product.description}
-                  </span>
-
-                  <div className="absolute hidden w-64 p-2 mb-2 text-sm text-white whitespace-normal transform -translate-x-1/2 bg-gray-800 rounded left-1/2 bottom-full group-hover:block">
-                    {product.description}
-                  </div>
-                </div>
-              </td>
-
-              <td scope="col" className="px-3 py-3 border">
-                <div className="relative flex items-center">
-                  {/* Display the first 7 members */}
-                  {product.members.slice(0, 7).map((member, index) => (
-                    <img
-                      key={index}
-                      src={member}
-                      alt="User"
-                      className="w-6 h-6 border rounded-full"
-                      style={{ position: "relative", left: `${-10 * index}px` }}
-                    />
-                  ))}
-
-                  {/* Show the count of additional members if there are more than 7 */}
-                  {product.members.length > 7&& (
-                    <div
-                      className="absolute flex items-center justify-center w-6 h-6 text-gray-600 bg-gray-300 border rounded-full"
-                      style={{ left: `${14 * 7}px` }}
-                    >
-                      +{product.members.length - 7}
+      <div>
+        {filteredProducts.length === 0 ? (
+          <p className="mt-2 text-center text-gray-500">Not Found</p>
+        ) : (
+          // Table Section
+          <table className="w-auto min-w-full text-xs text-left text-black">
+            <thead className="text-gray-400 transition-colors duration-300 bg-white border text-md hover:bg-gray-100">
+              {/* Heading table row */}
+              <tr>
+                <th
+                  scope="col"
+                  className="px-3 py-3 border border-white w-[23%]"
+                >
+                  <div className="flex items-center justify-between w-full">
+                    <div className="flex items-center justify-start space-x-2">
+                      <input
+                        id="checkbox-all-search"
+                        type="checkbox"
+                        className="w-4 h-4 rounded accent-black"
+                        checked={selectAll}
+                        onChange={handleSelectAll}
+                      />
+                      <label htmlFor="checkbox-all-search">Brand</label>
                     </div>
-                  )}
-                </div>
-              </td>
-
-              <td scope="col" className="px-1 py-3 border">
-                <div className="flex space-x-2">
-                  {product.categories.map((category, index) => (
-                    <h1
-                      key={index}
-                      className={`px-2 py-1 text-xs font-bold text-center rounded-lg ${
-                        categoryStyles[category] || "text-gray-800 bg-gray-200"
-                      }`}
-                    >
-                      {category}
-                    </h1>
-                  ))}
-                </div>
-              </td>
-
-              <td
-                scope="col"
-                className="relative py-3 overflow-hidden overflow-x-auto border no-scrollbar whitespace-nowrap"
-              >
-                <div className="absolute inset-0 flex items-center px-3">
-                  <div className="flex space-x-2 whitespace-nowrap">
-                    {product.tags.map((tag, index) => (
-                      <h1
-                        key={index}
-                        className="px-2 py-1 text-xs text-center bg-gray-200 border rounded-lg"
-                      >
-                        {tag}
-                      </h1>
-                    ))}
+                    <FaPlus />
                   </div>
-                </div>
-              </td>
+                </th>
+                <th scope="col" className="px-3 py-3 border w-[15%]">
+                  Description
+                </th>
+                <th scope="col" className="px-3 py-3 border w-[17%]">
+                  Members
+                </th>
+                <th scope="col" className="px-3 py-3 border w-[15%]">
+                  Categories
+                </th>
+                <th scope="col" className="px-3 py-3 border w-[15%]">
+                  Tags
+                </th>
+                <th scope="col" className="px-3 py-3 border w-[15%]">
+                  Next meetings
+                </th>
+                <th scope="col" className="w-8 px-3 py-3 text-center border">
+                  <FaPlus />
+                </th>
+              </tr>
+              {/* Heading table row end */}
+            </thead>
 
-              <td scope="col" className="py-2 text-center border">
-                <div className="flex px-3 space-x-1">
-                  {/* <h1 className="px-1 py-1 text-xs font-bold text-center text-green-800 bg-green-200 border rounded-lg">
-                    {product.nextMeeting}
-                  </h1> */}
-                  {product.nextMeeting.map((meeting, index) => (
-                    <h1
-                      key={index}
-                      className={`px-2 py-1 text-xs font-bold text-center rounded-lg ${
-                        nextMeetingStyles[meeting] ||
-                        "text-gray-800 bg-gray-200"
-                      }`}
-                    >
-                      {meeting}
+            <tbody>
+              {filteredProducts.map((product) => (
+                <tr
+                  key={product.id}
+                  className={`${
+                    selectedProducts.some(
+                      (selected) => selected.id === product.id
+                    )
+                      ? "bg-gray-100"
+                      : ""
+                  } hover:bg-gray-100 transition-colors duration-500`}
+                >
+                  <td className="px-3 py-3 border">
+                    <div className="flex items-center justify-between w-full">
+                      <div className="flex items-center justify-start space-x-2">
+                        <input
+                          id={`checkbox-${product.id}`}
+                          type="checkbox"
+                          className="w-4 h-4 rounded accent-black"
+                          checked={selectedProducts.some(
+                            (selected) => selected.id === product.id
+                          )}
+                          onChange={() => handleSelect(product)}
+                        />
+                        <img
+                          src={product.imgSrc}
+                          alt={product.brand}
+                          className="w-5"
+                        />
+                        <label htmlFor={`checkbox-${product.id}`}>
+                          {product.brand}
+                        </label>
+                      </div>
+                      <div className="inline-flex items-center gap-1">
+                        <LuMessagesSquare className="text-gray-500" />
+                        <span
+                          className={`min-w-[0.7rem] text-gray-500 ${
+                            product.messages === null ? "invisible" : ""
+                          }`}
+                        >
+                          {product.messages || ""}
+                        </span>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="relative px-3 py-3 font-normal border">
+                    <div className="relative group">
+                      <span className="block truncate max-w-44">
+                        {product.description}
+                      </span>
+                      <div className="absolute hidden w-64 p-2 mb-2 text-sm text-white whitespace-normal transform -translate-x-1/2 bg-gray-800 rounded left-1/2 bottom-full group-hover:block">
+                        {product.description}
+                      </div>
+                    </div>
+                  </td>
+                  <td className="px-3 py-3 border">
+                    <div className="relative flex items-center">
+                      {/* Display the first 7 members */}
+                      {product.members.slice(0, 7).map((member, index) => (
+                        <img
+                          key={index}
+                          src={member}
+                          alt="User"
+                          className="w-6 h-6 border rounded-full"
+                          style={{
+                            position: "relative",
+                            left: `${-10 * index}px`,
+                          }}
+                        />
+                      ))}
+                      {/* Show the count of additional members if there are more than 7 */}
+                      {product.members.length > 7 && (
+                        <div
+                          className="absolute flex items-center justify-center w-6 h-6 text-gray-600 bg-gray-300 border rounded-full"
+                          style={{ left: `${14 * 7}px` }}
+                        >
+                          +{product.members.length - 7}
+                        </div>
+                      )}
+                    </div>
+                  </td>
+                  <td className="px-1 py-3 border">
+                    <div className="flex space-x-2">
+                      {product.categories.map((category, index) => (
+                        <h1
+                          key={index}
+                          className={`px-2 py-1 text-xs font-bold text-center rounded-lg ${
+                            categoryStyles[category] ||
+                            "text-gray-800 bg-gray-200"
+                          }`}
+                        >
+                          {category}
+                        </h1>
+                      ))}
+                    </div>
+                  </td>
+                  <td className="relative py-3 overflow-hidden overflow-x-auto border no-scrollbar whitespace-nowrap">
+                    <div className="absolute inset-0 flex items-center px-3">
+                      <div className="flex space-x-2 whitespace-nowrap">
+                        {product.tags.map((tag, index) => (
+                          <h1
+                            key={index}
+                            className="px-2 py-1 text-xs text-center bg-gray-200 border rounded-lg"
+                          >
+                            {tag}
+                          </h1>
+                        ))}
+                      </div>
+                    </div>
+                  </td>
+                  <td className="py-2 text-center border">
+                    <div className="flex px-3 space-x-1">
+                      {/* <h1 className="px-1 py-1 text-xs font-bold text-center text-green-800 bg-green-200 border rounded-lg">
+                  {product.nextMeeting}
+                </h1> */}
+                      {product.nextMeeting.map((meeting, index) => (
+                        <h1
+                          key={index}
+                          className={`px-2 py-1 text-xs font-bold text-center rounded-lg ${
+                            nextMeetingStyles[meeting] ||
+                            "text-gray-800 bg-gray-200"
+                          }`}
+                        >
+                          {meeting}
+                        </h1>
+                      ))}
+                    </div>
+                  </td>
+                  <td className="w-8 px-3 py-3 text-center border">
+                    <button className="text-lg text-black"></button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+
+            {/* Calculation and Count Row */}
+            <tfoot>
+              <tr>
+                <td className="px-3 py-3 border border-white">
+                  <div className="flex items-center justify-end w-full text-xs">
+                    <h1>
+                      <span className="font-semibold">{productCount}</span>{" "}
+                      Count
                     </h1>
-                  ))}
-                </div>
-              </td>
-              <td scope="col" className="w-8 px-3 py-3 text-center border">
-                <button className="text-lg text-black"></button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-
-        {/* Calculation and Count Row */}
-        <tr>
-          <td scope="col" className="px-3 py-3 border border-wih">
-            <div className="flex items-center justify-end w-full text-xs">
-              <h1>
-                <span className="font-semibold">{productCount}</span> Count
-              </h1>
-            </div>
-          </td>
-
-          <td scope="col" className="relative px-3 py-3 text-gray-400 border">
-            <div className="flex items-center justify-end text-xs">
-              <FaPlus />
-              <button className="ml-2">Add Calculation</button>
-            </div>
-          </td>
-
-          <td scope="col" className="px-3 py-3 text-gray-400 border">
-            <div className="flex items-center justify-end text-xs">
-              <FaPlus />
-              <button className="ml-2">Add Calculation</button>
-            </div>
-          </td>
-
-          <td scope="col" className="px-3 py-3 text-gray-400 border">
-            <div className="flex items-center justify-end text-xs">
-              <FaPlus />
-              <button className="ml-2">Add Calculation</button>
-            </div>
-          </td>
-
-          <td
-            scope="col"
-            className="relative px-3 py-3 overflow-hidden overflow-x-auto border no-scrollbar whitespace-nowrap"
-          >
-            <div className="flex items-center justify-end text-xs text-gray-400">
-              <FaPlus />
-              <button className="ml-2">Add Calculation</button>
-            </div>
-          </td>
-
-          <td scope="col" className="py-2 text-center border"></td>
-
-          <td scope="col" className="w-8 px-3 py-3 text-center border">
-            <button className="text-black"></button>
-          </td>
-        </tr>
-
-        {/* Calculation and Count Row end*/}
-      </table>
+                  </div>
+                </td>
+                <td className="relative px-3 py-3 text-gray-400 border">
+                  <div className="flex items-center justify-end text-xs">
+                    <FaPlus />
+                    <button className="ml-2">Add Calculation</button>
+                  </div>
+                </td>
+                <td className="px-3 py-3 text-gray-400 border">
+                  <div className="flex items-center justify-end text-xs">
+                    <FaPlus />
+                    <button className="ml-2">Add Calculation</button>
+                  </div>
+                </td>
+                <td className="px-3 py-3 text-gray-400 border">
+                  <div className="flex items-center justify-end text-xs">
+                    <FaPlus />
+                    <button className="ml-2">Add Calculation</button>
+                  </div>
+                </td>
+                <td className="relative px-3 py-3 overflow-hidden overflow-x-auto border no-scrollbar whitespace-nowrap">
+                  <div className="flex items-center justify-end text-xs text-gray-400">
+                    <FaPlus />
+                    <button className="ml-2">Add Calculation</button>
+                  </div>
+                </td>
+                <td className="py-2 text-center border"></td>
+                <td className="w-8 px-3 py-3 text-center border">
+                  <button className="text-black"></button>
+                </td>
+              </tr>
+            </tfoot>
+            {/* Calculation and Count Row end */}
+          </table>
+        )}
+      </div>
 
       {/* product list row 1 start  */}
     </div>
