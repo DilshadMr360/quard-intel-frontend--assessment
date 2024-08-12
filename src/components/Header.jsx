@@ -9,7 +9,7 @@ import { FaRegPlusSquare } from "react-icons/fa";
 import { TbBrand4Chan } from "react-icons/tb";
 import { BsSortNumericDown } from "react-icons/bs";
 
-const Header = () => {
+const Header = (onSearch ) => {
   return (
     <header className="flex flex-col w-full mt-3 text-sm rounded-lg font-jakarta">
       <table className="min-w-full divide-y divide-gray-200">
@@ -50,16 +50,16 @@ const Header = () => {
                 <span className='font-semibold'>All brands</span>
                 <MdOutlineArrowDropDown />
                 <select className="absolute inset-0 opacity-0 cursor-pointer">
-                  <option>Apple</option>
-                  <option>Samsung</option>
-                  <option>Sony</option>
-                  <option>Dell</option>
-                  <option>HP</option>
-                  <option>Lenovo</option>
-                  <option>Asus</option>
-                  <option>Acer</option>
-                  <option>Microsoft</option>
+                  <option>Wix</option>
+                  <option>Shopify</option>
+                  <option>MailChamp</option>
+                  <option>Paypal</option>
+                  <option>Disney</option>
+                  <option>Intercom</option>
                   <option>Google</option>
+                  <option>Evernote</option>
+                  <option>Microsoft</option>
+                  <option>Invision</option>
                 </select>
               </div>
 
@@ -86,16 +86,15 @@ const Header = () => {
                 <span className='font-semibold'>Tags</span>
                 <MdOutlineArrowDropDown />
                 <select className="absolute inset-0 opacity-0 cursor-pointer">
-                  <option>New Arrival</option>
-                  <option>Best Seller</option>
-                  <option>Discounted</option>
-                  <option>Limited Edition</option>
-                  <option>Online Exclusive</option>
-                  <option>Back in Stock</option>
-                  <option>Trending</option>
-                  <option>Top Rated</option>
-                  <option>Eco-Friendly</option>
-                  <option>Clearance</option>
+                  <option>#DigitalTransformation</option>
+                  <option>#OnlineShopping</option>
+                  <option>#TechInnovation</option>
+                  <option>#BuySellOnline</option>
+                  <option>#BusinessPatnerships</option>
+                  <option>#SmartFinance</option>
+                  <option>#LogisticTech</option>
+                  <option>#B2CMarketing</option>
+                  <option>#APIIntegration</option>
                 </select>
               </div>
 
