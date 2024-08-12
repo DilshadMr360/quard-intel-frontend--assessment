@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { LuMessagesSquare } from "react-icons/lu";
 import { FaPlus } from "react-icons/fa6";
 import wix from "../assets/wix.png";
@@ -162,13 +162,24 @@ const products = [
 const ProductList = () => {
 
   const { addProduct, removeProduct, selectedProducts } = useSelectionContext();
-  
+  const productCount = products.length;
+
+  const [selectAll, setSelectAll] = useState(false);
 
   const handleSelect = (product) => {
     if (selectedProducts.some(selected => selected.id === product.id)) {
       removeProduct(product.id);
     } else {
       addProduct(product);
+    }
+  };
+
+  const handleSelectAll = () => {
+    setSelectAll(!selectAll);
+    if (!selectAll) {
+      products.forEach(product => addProduct(product));
+    } else {
+      products.forEach(product => removeProduct(product.id));
     }
   };
   
@@ -187,7 +198,9 @@ const ProductList = () => {
                   <input
                     id="checkbox-all-search"
                     type="checkbox"
-                    className="w-4 h-4 rounded accent-black" 
+                    className="w-4 h-4 rounded accent-black"
+                    checked={selectAll}
+                    onChange={handleSelectAll} 
                   />
                   <label htmlFor="checkbox-all-search">Brand </label>
                 </div>
@@ -357,7 +370,7 @@ const ProductList = () => {
           <td scope="col" className="px-3 py-3 border border-wih">
             <div className="flex items-center justify-end w-full text-xs">
               <h1>
-                <span className="font-semibold">0</span> Count
+                <span className="font-semibold">{productCount}</span> Count
               </h1>
             </div>
           </td>
@@ -365,21 +378,21 @@ const ProductList = () => {
           <td scope="col" className="relative px-3 py-3 text-gray-400 border">
             <div className="flex items-center justify-end text-xs">
               <FaPlus />
-              <h1 className="ml-2">Add Calculation</h1>
+              <button className="ml-2">Add Calculation</button>
             </div>
           </td>
 
           <td scope="col" className="px-3 py-3 text-gray-400 border">
             <div className="flex items-center justify-end text-xs">
               <FaPlus />
-              <h1 className="ml-2">Add Calculation</h1>
+              <button className="ml-2">Add Calculation</button>
             </div>
           </td>
 
           <td scope="col" className="px-3 py-3 text-gray-400 border">
             <div className="flex items-center justify-end text-xs">
               <FaPlus />
-              <h1 className="ml-2">Add Calculation</h1>
+              <button className="ml-2">Add Calculation</button>
             </div>
           </td>
 
@@ -389,7 +402,7 @@ const ProductList = () => {
           >
             <div className="flex items-center justify-end text-xs text-gray-400">
               <FaPlus />
-              <h1 className="ml-2">Add Calculation</h1>
+              <button className="ml-2">Add Calculation</button>
             </div>
           </td>
 

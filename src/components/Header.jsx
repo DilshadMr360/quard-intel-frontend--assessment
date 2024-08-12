@@ -34,10 +34,10 @@ const Header = (onSearch ) => {
                   placeholder="Search for..."
                 />
               </div>
-              <div className="flex flex-col items-center gap-2 md:flex-row">
+              <button className="flex flex-col items-center gap-2 md:flex-row">
                 <LuMessagesSquare className="w-10 p-2 text-gray-500 border rounded-lg h-9" />
                 <CiSettings className="w-10 p-1.5 border rounded-lg h-9 text-gray-500" />
-              </div>
+              </button>
             </div>
           </tr>
 
@@ -98,14 +98,14 @@ const Header = (onSearch ) => {
                 </select>
               </div>
 
-              <div className="flex items-center px-2 space-x-1 border rounded-lg bg-gray-50 ">
+              <button className="flex items-center px-2 space-x-1 border rounded-lg bg-gray-50 ">
                 <BsSortNumericDown />
                 <span>Sort</span>
-              </div>
-              <div className="flex items-center px-2 space-x-1 border rounded-lg bg-gray-50 ">
+              </button>
+              <button className="flex items-center px-2 space-x-1 border rounded-lg bg-gray-50 ">
                 <RiExportLine />
                 <span>Filter</span>
-              </div>
+              </button>
             </div>
 
             <div className="flex flex-col sm:flex-row sm:space-y-0 sm:space-x-4">
