@@ -101,7 +101,7 @@ const Sidebar = () => {
       <div className="mx-2">
         {/* Folder Section */}
         <section className="flex items-center justify-between px-2 mt-5 font-semibold text-gray-500">
-          <h1 className="text-md">Folders</h1>
+          <button className="text-md">Folders</button>
           <GoPlus className="text-md" />
         </section>
 
@@ -180,28 +180,28 @@ const Sidebar = () => {
       </div>        
 
       {/* Sidebar Footer Section */}
-      <footer className="mx-4 mt-20 ">
+      <footer className="mx-2 mt-20 ">
         {/* Invite teammates */}
-        <div className="flex flex-col items-center mb-4 font-semibold sm:flex-row sm:items-center sm:gap-2">
+        <button className="flex flex-col items-center w-full px-2 py-1 mb-2 font-semibold transition-colors duration-500 cursor-pointer sm:flex-row sm:items-center sm:gap-2 hover:bg-gray-100 hover:rounded-md ">
           <HiOutlineUserAdd />
           <h2 className="text-center text-md sm:text-left">Invite teammates</h2>
-        </div>
+        </button>
 
         {/* Help and first steps */}
-        <div className="flex flex-col items-center mb-4 font-semibold sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-center space-x-2 text-md">
+        <div className="flex flex-col items-center px-2 py-1 mb-2 font-semibold transition-colors duration-500 cursor-pointer sm:flex-row sm:items-center sm:justify-between hover:bg-gray-100 hover:rounded-md group">
+          <button className="flex items-center space-x-2 text-md">
             <VscQuestion />
             <span>Help and First Steps</span>
-          </div>
-          <h1 className="px-2 py-1 text-sm text-center text-gray-500 bg-gray-100 rounded-lg sm:text-left">
+          </button>
+          <h1 className="px-2 py-1 text-sm text-center text-gray-500 bg-gray-200 rounded-lg sm:text-left group-hover:bg-white">
             0/6
           </h1>
         </div>
 
 
            {/* Trial and Billing */}
-           <div className="flex flex-col px-1 py-1 font-semibold bg-gray-100 rounded-lg sm:flex-row sm:items-center sm:justify-between">
-          <h1 className="flex items-center gap-2 text-sm text-center sm:text-left">
+           <div className="flex flex-col px-1 py-2 font-semibold bg-gray-100 rounded-lg sm:flex-row sm:items-center sm:justify-between">
+          <h1 className="flex items-center gap-2 text-sm text-center sm:text-left ">
             <span className="px-2 py-1 bg-white rounded-md ">7</span> days left
             on trial
           </h1>

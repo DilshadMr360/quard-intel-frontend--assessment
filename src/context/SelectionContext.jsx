@@ -6,23 +6,27 @@ export const SelectionProvider = ({ children }) => {
   const [selectedProducts, setSelectedProducts] = useState([]);
 
   const addProduct = (product) => {
-    setSelectedProducts([...selectedProducts, product]);
+    setSelectedProducts((prev) => {
+      if (!prev.some((p) => p.id === product.id)) {
+        return [...prev, product];
+      }
+      return prev;
+    });
   };
 
-  const removeProduct = (id) => {
-    setSelectedProducts(selectedProducts.filter(product => product.id !== id));
+  const removeProduct = (productId) => {
+    setSelectedProducts((prev) =>
+      prev.filter((product) => product.id !== productId)
+    );
   };
 
   return (
-    <SelectionContext.Provider value={{ selectedProducts, addProduct, removeProduct }}>
+    <SelectionContext.Provider
+      value={{ selectedProducts, addProduct, removeProduct }}
+    >
       {children}
     </SelectionContext.Provider>
   );
 };
 
-export const useSelectionContext = () => {
-  return useContext(SelectionContext);
-};
-
-
-export default SelectionContext;  
+export const useSelectionContext = () => useContext(SelectionContext);
