@@ -54,7 +54,7 @@ const Sidebar = () => {
         <div className="overflow-hidden border rounded-lg">
           <div className="font-medium text-gray-800 text-md whitespace-nowrap dark:text-neutral-200">
             <div className="mx-2 my-2 space-y-2">
-              <div className="flex items-center px-2 py-1 transition-colors duration-300 cursor-pointer hover:bg-gray-100 hover:rounded-lg group">
+              <div className="flex items-center px-2 py-1 transition-colors duration-500 cursor-pointer hover:bg-gray-100 hover:rounded-lg group">
                 <FaTools className="mr-3" />
                 <span className="flex-1 mr-4 font-semibold text-md">Design Team</span>
                 <div className="flex items-center p-2 bg-gray-100 rounded-lg group-hover:bg-white">
@@ -65,7 +65,7 @@ const Sidebar = () => {
                 </div>
               </div>
 
-              <div className="flex items-center px-2 py-1 transition-colors duration-300 cursor-pointer hover:bg-gray-100 hover:rounded-lg group">
+              <div className="flex items-center px-2 py-1 transition-colors duration-500 cursor-pointer hover:bg-gray-100 hover:rounded-lg group">
                 <FaBullhorn className="mr-3" />
                 <span className="flex-1 mr-4 font-semibold text-md">Marketing Team</span>
                 <div className="flex items-center p-2 bg-gray-100 rounded-lg group-hover:bg-white">
@@ -75,7 +75,7 @@ const Sidebar = () => {
                   <span className="text-sm">+ 2</span>
                 </div>
               </div>
-              <div className="flex items-center px-2 py-1 transition-colors duration-300 cursor-pointer hover:bg-gray-100 hover:rounded-lg group">
+              <div className="flex items-center px-2 py-1 transition-colors duration-500 cursor-pointer hover:bg-gray-100 hover:rounded-lg group">
                 <LiaArrowsAltHSolid className="mr-3" />
                 <span className="flex-1 mr-4 font-semibold text-md">Development Team</span>
                 <div className="flex items-center p-2 bg-gray-100 rounded-lg group-hover:bg-white">
@@ -89,7 +89,7 @@ const Sidebar = () => {
 
             <div>
               <hr className="my-2 border-gray-300" />
-              <div className="flex items-center p-2 mx-2 text-gray-500 transition-colors duration-300 cursor-pointer">
+              <div className="flex items-center p-2 mx-2 text-gray-500 transition-colors duration-500 cursor-pointer">
                 <FaRegPlusSquare className="mr-3" />
                 <span className="flex-1 text-md">Create a team</span>
               </div>
@@ -109,7 +109,7 @@ const Sidebar = () => {
         {["Products", "Sales", "Design"].map((label, index) => (
           <section key={label} className="relative mt-3 font-semibold">
             <div
-              className="flex items-center w-full px-2 py-2 transition-colors duration-300 cursor-pointer hover:rounded-md hover:bg-gray-100"
+              className="flex items-center w-full px-2 py-2 transition-colors duration-500 cursor-pointer hover:rounded-md hover:bg-gray-100"
               onClick={() => toggleDropdown(index)}
             >
               <TbFolder className="mr-2 text-md" />
@@ -127,13 +127,13 @@ const Sidebar = () => {
             <div className="relative items-start ml-3">
               {/* Vertical Line */}
               <div
-                className={`absolute top-4 left-0 h-3/4 border-l border-gray-300 transition-opacity duration-300 border ${
+                className={`absolute top-4 left-0 h-3/4 border-l border-gray-300 transition-opacity duration-500 border ${
                   openDropdown === index ? "opacity-100" : "opacity-0"
                 }`}
               ></div>
               {/* Dropdown Content */}
               <div
-                className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                className={`transition-all duration-500 ease-in-out overflow-hidden ${
                   openDropdown === index
                     ? "max-h-screen opacity-100"
                     : "max-h-0 opacity-0"
@@ -144,13 +144,13 @@ const Sidebar = () => {
                     {dropdownContent[index].map((item, idx) => (
                       <div
                         key={idx}
-                        className="flex items-center px-4 py-2 transition-colors duration-300 cursor-pointer hover:bg-gray-100 hover:rounded-md text-md"
+                        className="flex items-center px-4 py-2 transition-colors duration-500 cursor-pointer hover:bg-gray-100 hover:rounded-md text-md"
                       >
                         {item}
                       </div>
                     ))}
                     {/* Add New Option */}
-                    <div className="flex items-center px-4 py-2 transition-colors duration-300 cursor-pointer hover:bg-gray-100 text-md">
+                    <div className="flex items-center px-4 py-2 transition-colors duration-500 cursor-pointer hover:bg-gray-100 text-md">
                       <FaRegPlusSquare className="hidden mr-2 md:block" />
                       <span>Add New Sub</span>
                     </div>
@@ -169,7 +169,7 @@ const Sidebar = () => {
             {["Office", "Legal"].map((label) => (
               <div
                 key={label}
-                className="flex items-center w-full px-2 py-2 font-semibold transition-colors duration-300 cursor-pointer hover:bg-gray-100 text-md"
+                className="flex items-center w-full px-2 py-2 font-semibold transition-colors duration-500 cursor-pointer hover:bg-gray-100 text-md"
               >
                 <TbFolder className="mr-2 text-md" />
                 <h1 className="flex-1 text-md">{label}</h1>
@@ -193,7 +193,21 @@ const Sidebar = () => {
             <VscQuestion />
             <span>Help and First Steps</span>
           </div>
-    
+          <h1 className="px-2 py-1 text-sm text-center text-gray-500 bg-gray-100 rounded-lg sm:text-left">
+            0/6
+          </h1>
+        </div>
+
+
+           {/* Trial and Billing */}
+           <div className="flex flex-col px-1 py-1 font-semibold bg-gray-100 rounded-lg sm:flex-row sm:items-center sm:justify-between">
+          <h1 className="flex items-center gap-2 text-sm text-center sm:text-left">
+            <span className="px-2 py-1 bg-white rounded-md ">7</span> days left
+            on trial
+          </h1>
+          <button className="px-2 py-2 mt-2 text-xs text-white bg-black rounded-lg sm:mt-0">
+            Add billing
+          </button>
         </div>
       </footer>
     </nav>
