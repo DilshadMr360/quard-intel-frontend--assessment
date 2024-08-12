@@ -1,24 +1,33 @@
 // src/components/Header.js
-import React from 'react';
-import { CiSettings } from 'react-icons/ci';
-import { FiSearch } from 'react-icons/fi';
-import { LuMessagesSquare, LuImport } from 'react-icons/lu';
-import { MdOutlineArrowDropDown } from 'react-icons/md';
-import { RiExportLine } from 'react-icons/ri';
+import React, { useState } from "react";
+import { CiSettings } from "react-icons/ci";
+import { FiSearch } from "react-icons/fi";
+import { LuMessagesSquare, LuImport } from "react-icons/lu";
+import { MdOutlineArrowDropDown } from "react-icons/md";
+import { RiExportLine } from "react-icons/ri";
 import { FaRegPlusSquare } from "react-icons/fa";
 import { TbBrand4Chan } from "react-icons/tb";
 import { BsSortNumericDown } from "react-icons/bs";
 
-const Header = (onSearch ) => {
+const Header = ({ onSearch }) => {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearchChange = (event) => {
+    const value = event.target.value;
+    setSearchTerm(value);
+    console.log("Current Search Term:", value); // Log current search term
+    if (onSearch) {
+      onSearch(value); // Pass the search term to the parent component
+    }
+  };
+
   return (
     <header className="flex flex-col w-full mt-3 text-sm rounded-lg font-jakarta">
       <table className="min-w-full divide-y divide-gray-200">
         <thead>
           {/* Header row 1 */}
           <tr className="flex flex-col items-center justify-between px-3 border-t border-l border-r rounded-t-lg md:flex-row md:mx-2">
-            <th className="font-semibold text-black text-start">
-              Products
-            </th>
+            <th className="font-semibold text-black text-start">Products</th>
             <div className="flex flex-col items-center w-full my-2 ml-auto space-y-4 md:flex-row md:space-y-0 md:space-x-4 md:w-auto">
               <div className="relative">
                 <label htmlFor="table-search" className="sr-only">
@@ -32,6 +41,8 @@ const Header = (onSearch ) => {
                   id="table-search-users"
                   className="block w-40 p-2 text-sm text-gray-900 border md:w-auto rounded-xl md:ps-10"
                   placeholder="Search for..."
+                  value={searchTerm}
+                  onChange={handleSearchChange}
                 />
               </div>
               <button className="flex flex-col items-center gap-2 md:flex-row">
@@ -40,14 +51,13 @@ const Header = (onSearch ) => {
               </button>
             </div>
           </tr>
-
           {/* Header row 2 */}
           <tbody className="items-center justify-between px-3 py-4 mx-2 border md:flex">
             <div className="flex flex-col space-y-3 sm:flex-row sm:space-y-0 sm:space-x-3">
               {/* All Brands Dropdown */}
               <div className="relative flex items-center px-2 py-2 space-x-1 border rounded-lg ">
                 <TbBrand4Chan />
-                <span className='font-semibold'>All brands</span>
+                <span className="font-semibold">All brands</span>
                 <MdOutlineArrowDropDown />
                 <select className="absolute inset-0 opacity-0 cursor-pointer">
                   <option>Wix</option>
@@ -65,7 +75,7 @@ const Header = (onSearch ) => {
 
               {/* Desks Dropdown */}
               <div className="relative flex items-center px-1 py-2 space-x-1 border rounded-lg ">
-                <span className='font-semibold'>Desk</span>
+                <span className="font-semibold">Desk</span>
                 <MdOutlineArrowDropDown />
                 <select className="absolute inset-0 opacity-0 cursor-pointer">
                   <option>Office Desks</option>
@@ -83,7 +93,7 @@ const Header = (onSearch ) => {
 
               {/* Tags Dropdown */}
               <div className="relative flex items-center px-1 py-2 space-x-1 border rounded-lg ">
-                <span className='font-semibold'>Tags</span>
+                <span className="font-semibold">Tags</span>
                 <MdOutlineArrowDropDown />
                 <select className="absolute inset-0 opacity-0 cursor-pointer">
                   <option>#DigitalTransformation</option>
@@ -111,11 +121,11 @@ const Header = (onSearch ) => {
             <div className="flex flex-col sm:flex-row sm:space-y-0 sm:space-x-4">
               <button className="flex items-center px-2 py-2 space-x-1 text-black border rounded-lg ">
                 <FaRegPlusSquare />
-                <span className='font-semibold'>Meeting</span>
+                <span className="font-semibold">Meeting</span>
               </button>
               <button className="flex items-center px-2 space-x-1 text-black border rounded-lg ">
-                <LuImport/>
-                <span className='font-semibold'>Import/Export</span>
+                <LuImport />
+                <span className="font-semibold">Import/Export</span>
               </button>
             </div>
           </tbody>
