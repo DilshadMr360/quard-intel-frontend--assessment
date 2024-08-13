@@ -79,6 +79,47 @@ const Sidebar = () => {
                   teamName="Development Team"
                   count={3}
                 />
+                {/* Design Team */}
+                <div className="flex items-center px-2 py-1 transition-colors duration-500 cursor-pointer hover:bg-gray-100 hover:rounded-lg group">
+                  <FaTools className="mr-2" />
+                  <span className="flex-1 hidden mr-2 text-sm font-semibold sm:flex">
+                    Design Team
+                  </span>
+                  <div className="items-center hidden p-1 transition-transform transform bg-gray-100 rounded-lg hover:scale-110 group-hover:bg-white sm:flex">
+                    <span className="mr-1">
+                      <FaCogs className="w-5 h-5 p-1 bg-white border rounded-md" />
+                    </span>
+                    <span className="text-xs">+ 1</span>
+                  </div>
+                </div>
+
+                {/* Marketing Team */}
+                <div className="flex items-center px-2 py-1 transition-colors duration-500 cursor-pointer hover:bg-gray-100 hover:rounded-lg group">
+                  <FaBullhorn className="mr-2" />
+                  <span className="flex-1 hidden mr-2 text-sm font-semibold sm:flex">
+                    Marketing Team
+                  </span>
+                  <div className="items-center hidden p-1 transition-transform transform bg-gray-100 rounded-lg hover:scale-110 group-hover:bg-white sm:flex">
+                    <span className="mr-1">
+                      <FaCogs className="w-5 h-5 p-1 bg-white border rounded-md" />
+                    </span>
+                    <span className="text-xs">+ 2</span>
+                  </div>
+                </div>
+
+                {/* Development Team */}
+                <div className="flex items-center px-2 py-1 transition-colors duration-500 cursor-pointer hover:bg-gray-100 hover:rounded-lg group">
+                  <LiaArrowsAltHSolid className="mr-2" />
+                  <span className="flex-1 hidden mr-2 text-sm font-semibold sm:flex">
+                    Development Team
+                  </span>
+                  <div className="items-center hidden p-1 transition-transform transform bg-gray-100 rounded-lg hover:scale-110 group-hover:bg-white sm:flex">
+                    <span className="mr-1">
+                      <FaCogs className="w-5 h-5 p-1 bg-white border rounded-md" />
+                    </span>
+                    <span className="text-xs">+ 3</span>
+                  </div>
+                </div>
               </div>
 
               {/* Create a team option */}
