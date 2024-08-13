@@ -19,7 +19,7 @@ const Dashboard = () => {
     <SelectionProvider>
       <div className="flex">
         <Sidebar />
-        <main className="w-8/12 mx-2 my-2 mt-2 border rounded-lg md:w-full">
+        <main className="w-8/12 mx-2 my-2 mt-2 border rounded-xl md:w-full">
           <Header onSearch={handleSearch} />
           <div className="flex flex-col justify-between h-auto">
             <ProductList searchTerm={searchTerm} />{" "}
