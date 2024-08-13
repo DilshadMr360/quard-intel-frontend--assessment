@@ -1,16 +1,16 @@
-import wix from '../assets/images/wix.png';
-import shopify from '../assets/images/shopify.png';
-import paypal from '../assets/images/paypal1.png';
-import disney from '../assets/images/disney.png';
-import intercom from '../assets/images/intercom.png';
-import user from '../assets/images/user.png';
-import user2 from '../assets/images/user2.png';
-import user3 from '../assets/images/user3.png';
-import evernote from '../assets/images/evernote.png';
-import mailchamp from '../assets/images/mailchamp.png';
-import google from '../assets/images/google.png';
-import invision from '../assets/images/invision.png';
-import microsoft from '../assets/images/microsoft.png';
+import wix from '../assets/images/wix.webp';
+import shopify from '../assets/images/shopify.webp';
+import paypal from '../assets/images/paypal1.webp';
+import disney from '../assets/images/disney.webp';
+import intercom from '../assets/images/intercom.webp';
+import user from '../assets/images/user.webp';
+import user2 from '../assets/images/user2.webp';
+import user3 from '../assets/images/user3.webp';
+import evernote from '../assets/images/evernote.webp';
+import mailchamp from '../assets/images/mailchamp.webp';
+import google from '../assets/images/google.webp';
+import invision from '../assets/images/invision.webp';
+import microsoft from '../assets/images/microsoft.webp';
 
 export const categoryStyles = {
   Automation: "text-purple-800 bg-purple-200",

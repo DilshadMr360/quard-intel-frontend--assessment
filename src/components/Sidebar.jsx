@@ -6,8 +6,8 @@ import { LiaArrowsAltHSolid } from "react-icons/lia";
 import { TbFolder } from "react-icons/tb";
 import { HiOutlineUserAdd } from "react-icons/hi";
 import { VscQuestion } from "react-icons/vsc";
-import logo from "../assets/images/company_logo.png";
-import user from "../assets/images/user.png";
+import logo from "../assets/images/company_logo.webp";
+import user from "../assets/images/user.webp";
 
 const Sidebar = () => {
   // State to manage which dropdown is open
@@ -64,7 +64,7 @@ const Sidebar = () => {
                   <span className="flex-1 hidden mr-2 text-sm font-semibold sm:flex">
                     Design Team
                   </span>
-                  <div className="items-center hidden p-1 transition-transform transform bg-gray-100 rounded-lg  hover:scale-110 group-hover:bg-white sm:flex">
+                  <div className="items-center hidden p-1 transition-transform transform bg-gray-100 rounded-lg hover:scale-110 group-hover:bg-white sm:flex">
                     <span className="mr-1">
                       <FaCogs className="w-5 h-5 p-1 bg-white border rounded-md" />
                     </span>
