@@ -64,47 +64,21 @@ const Sidebar = () => {
           <div className="overflow-hidden border rounded-lg">
             <div className="text-sm font-medium text-gray-800 whitespace-nowrap dark:text-neutral-200">
               <div className="mx-2 my-1 space-y-1">
-                {/* Design Team */}
-                <div className="flex items-center px-2 py-1 transition-colors duration-500 cursor-pointer hover:bg-gray-100 hover:rounded-lg group">
-                  <FaTools className="mr-2" />
-                  <span className="flex-1 hidden mr-2 text-sm font-semibold sm:flex">
-                    Design Team
-                  </span>
-                  <div className="items-center hidden p-1 transition-transform transform bg-gray-100 rounded-lg hover:scale-110 group-hover:bg-white sm:flex">
-                    <span className="mr-1">
-                      <FaCogs className="w-5 h-5 p-1 bg-white border rounded-md" />
-                    </span>
-                    <span className="text-xs">+ 1</span>
-                  </div>
-                </div>
-
-                {/* Marketing Team */}
-                <div className="flex items-center px-2 py-1 transition-colors duration-500 cursor-pointer hover:bg-gray-100 hover:rounded-lg group">
-                  <FaBullhorn className="mr-2" />
-                  <span className="flex-1 hidden mr-2 text-sm font-semibold sm:flex">
-                    Marketing Team
-                  </span>
-                  <div className="items-center hidden p-1 transition-transform transform bg-gray-100 rounded-lg hover:scale-110 group-hover:bg-white sm:flex">
-                    <span className="mr-1">
-                      <FaCogs className="w-5 h-5 p-1 bg-white border rounded-md" />
-                    </span>
-                    <span className="text-xs">+ 2</span>
-                  </div>
-                </div>
-
-                {/* Development Team */}
-                <div className="flex items-center px-2 py-1 transition-colors duration-500 cursor-pointer hover:bg-gray-100 hover:rounded-lg group">
-                  <LiaArrowsAltHSolid className="mr-2" />
-                  <span className="flex-1 hidden mr-2 text-sm font-semibold sm:flex">
-                    Development Team
-                  </span>
-                  <div className="items-center hidden p-1 transition-transform transform bg-gray-100 rounded-lg hover:scale-110 group-hover:bg-white sm:flex">
-                    <span className="mr-1">
-                      <FaCogs className="w-5 h-5 p-1 bg-white border rounded-md" />
-                    </span>
-                    <span className="text-xs">+ 3</span>
-                  </div>
-                </div>
+                <TeamCard
+                  icon={<FaTools className="mr-2" />}
+                  teamName="Design Team"
+                  count={1}
+                />
+                <TeamCard
+                  icon={<FaBullhorn className="mr-2" />}
+                  teamName="Marketing Team"
+                  count={2}
+                />
+                <TeamCard
+                  icon={<LiaArrowsAltHSolid className="mr-2" />}
+                  teamName="Development Team"
+                  count={3}
+                />
               </div>
 
               {/* Create a team option */}
@@ -171,12 +145,14 @@ const Sidebar = () => {
 
           {/* Help and first steps */}
           <div className="flex flex-col items-center px-2 py-1 mb-1 font-semibold transition-colors duration-500 cursor-pointer sm:flex-row sm:items-center sm:justify-between hover:bg-gray-100 hover:rounded-md group">
-            <button className="flex items-center space-x-2 text-sm">
-              <VscQuestion className="w-4 h-4" />
-              <span>Help and First Steps</span>
-            </button>
-
-            <h1 className="px-2 py-1 text-xs text-center text-gray-500 bg-gray-200 rounded-lg sm:text-left group-hover:bg-white">
+       
+            <button className="flex flex-col items-center w-full py-1 mb-1 font-semibold transition-colors duration-500 cursor-pointer sm:flex-row sm:items-center sm:gap-2 hover:bg-gray-100 hover:rounded-md ">
+            <VscQuestion  />
+            <h2 className="text-sm text-center sm:text-left">
+            Help and First Steps
+            </h2>
+          </button>
+            <h1 className="hidden px-2 py-1 text-xs text-center text-gray-500 bg-gray-200 rounded-lg md:block sm:text-left group-hover:bg-white">
               0/6
             </h1>
           </div>

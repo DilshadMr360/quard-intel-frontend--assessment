@@ -1,4 +1,3 @@
-// src/components/Dropdown.js
 import React from "react";
 import { MdOutlineArrowDropDown, MdOutlineArrowDropUp } from "react-icons/md";
 import { TbFolder } from "react-icons/tb";
@@ -24,8 +23,7 @@ const Dropdown = ({ label, items, isOpen, onClick, onAddNew }) => {
           className={`absolute top-3 left-0 h-3/4 border-l border-gray-300 transition-opacity duration-500 border ${
             isOpen ? "opacity-100" : "opacity-0"
           }`}
-        >
-        </div>
+        ></div>
         <div
           className={`transition-all duration-500 ease-in-out overflow-hidden ${
             isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
