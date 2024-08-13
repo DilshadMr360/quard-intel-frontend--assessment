@@ -18,8 +18,8 @@ const Dashboard = () => {
     <SelectionProvider>
       <div className="flex">
         <Sidebar />
-        <div className="w-full">
-          <Header onSearch={handleSearch} /> {/* Pass handleSearch to Header */}
+        <div className="w-8/12 md:w-full">
+          <Header onSearch={handleSearch} />
           <ProductList searchTerm={searchTerm} />{" "}
           {/* Pass searchTerm to ProductList */}
           <Footer />
