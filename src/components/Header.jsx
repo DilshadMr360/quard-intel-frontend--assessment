@@ -22,12 +22,14 @@ const Header = ({ onSearch }) => {
   };
 
   return (
-    <header className="flex flex-col w-full mt-3 text-sm rounded-lg font-jakarta">
+    <header className="flex flex-col w-full mt-2 text-sm rounded-lg font-jakarta">
       <table className="min-w-full divide-y divide-gray-200">
         <thead>
           {/* Header row 1 */}
-          <tr className="flex flex-col items-center justify-between px-3 border-t border-l border-r rounded-t-lg md:flex-row md:mx-2">
-            <th className="font-semibold text-black text-start">Products</th>
+          <tr className="flex flex-col items-center justify-between px-3 mx-2 border-t border-l border-r rounded-t-lg md:flex-row">
+            <th className="font-semibold text-black transition-transform transform text-start hover:scale-125">
+              Products
+            </th>
             <div className="flex flex-col items-center w-full my-2 ml-auto space-y-4 md:flex-row md:space-y-0 md:space-x-4 md:w-auto">
               <div className="relative">
                 <label htmlFor="table-search" className="sr-only">
@@ -46,18 +48,18 @@ const Header = ({ onSearch }) => {
                 />
               </div>
               <button className="flex flex-col items-center gap-2 md:flex-row">
-                <LuMessagesSquare className="w-10 p-2 text-gray-500 border rounded-lg h-9" />
-                <CiSettings className="w-10 p-1.5 border rounded-lg h-9 text-gray-500" />
+                <LuMessagesSquare className="w-10 p-2 text-gray-500 transition-transform transform border rounded-lg h-9 hover:scale-125 " />
+                <CiSettings className="w-10 p-1.5 border rounded-lg h-9 text-gray-500 transition-transform transform hover:scale-125" />
               </button>
             </div>
           </tr>
           {/* Header row 2 */}
-          <tbody className="items-center justify-between px-3 py-4 mx-2 border md:flex">
+          <tbody className="flex flex-col items-center justify-between px-3 py-4 mx-2 space-y-3 border md:space-y-0 md:flex-row md:space-x-4">
             <div className="flex flex-col space-y-3 sm:flex-row sm:space-y-0 sm:space-x-3">
               {/* All Brands Dropdown */}
-              <div className="relative flex items-center px-2 py-2 space-x-1 border rounded-lg ">
+              <div className="relative flex items-center justify-center px-2 py-2 space-x-1 transition-colors duration-500 border rounded-lg cursor-pointer hover:bg-gray-50 ">
                 <TbBrand4Chan />
-                <span className="font-semibold">All brands</span>
+                <span className="font-semibold text-center">All brands</span>
                 <MdOutlineArrowDropDown />
                 <select className="absolute inset-0 opacity-0 cursor-pointer">
                   <option>Wix</option>
@@ -74,8 +76,8 @@ const Header = ({ onSearch }) => {
               </div>
 
               {/* Desks Dropdown */}
-              <div className="relative flex items-center px-1 py-2 space-x-1 border rounded-lg ">
-                <span className="font-semibold">Desk</span>
+              <div className="relative flex items-center justify-center px-1 py-2 space-x-1 transition-colors duration-500 border rounded-lg cursor-pointer hover:bg-gray-50 ">
+                <span className="font-semibold text-center">Desk</span>
                 <MdOutlineArrowDropDown />
                 <select className="absolute inset-0 opacity-0 cursor-pointer">
                   <option>Office Desks</option>
@@ -92,8 +94,8 @@ const Header = ({ onSearch }) => {
               </div>
 
               {/* Tags Dropdown */}
-              <div className="relative flex items-center px-1 py-2 space-x-1 border rounded-lg ">
-                <span className="font-semibold">Tags</span>
+              <div className="relative flex items-center justify-center px-1 py-2 space-x-1 transition-colors duration-500 border rounded-lg cursor-pointer hover:bg-gray-50 ">
+                <span className="font-semibold text-center">Tags</span>
                 <MdOutlineArrowDropDown />
                 <select className="absolute inset-0 opacity-0 cursor-pointer">
                   <option>#DigitalTransformation</option>
@@ -108,24 +110,24 @@ const Header = ({ onSearch }) => {
                 </select>
               </div>
 
-              <button className="flex items-center px-2 space-x-1 border rounded-lg bg-gray-50 ">
+              <button className="flex items-center justify-center px-2 space-x-1 transition-transform transform border rounded-lg hover:scale-105 hover:bg-gray-50 ">
                 <BsSortNumericDown />
-                <span>Sort</span>
+                <span className="text-center">Sort</span>
               </button>
-              <button className="flex items-center px-2 space-x-1 border rounded-lg bg-gray-50 ">
+              <button className="flex items-center justify-center px-2 space-x-1 transition-transform transform border rounded-lg hover:scale-105 hover:bg-gray-50 ">
                 <RiExportLine />
-                <span>Filter</span>
+                <span className="text-center">Filter</span>
               </button>
             </div>
 
-            <div className="flex flex-col sm:flex-row sm:space-y-0 sm:space-x-4">
-              <button className="flex items-center px-2 py-2 space-x-1 text-black border rounded-lg ">
+            <div className="flex flex-col space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4">
+              <button className="flex items-center justify-center px-2 py-2 space-x-1 text-black transition-transform transform border rounded-lg hover:scale-105">
                 <FaRegPlusSquare />
-                <span className="font-semibold">Meeting</span>
+                <span className="font-semibold text-center ">Meeting</span>
               </button>
-              <button className="flex items-center px-2 space-x-1 text-black border rounded-lg ">
+              <button className="flex items-center justify-center px-2 space-x-1 text-black transition-transform transform border rounded-lg hover:scale-105">
                 <LuImport />
-                <span className="font-semibold">Import/Export</span>
+                <span className="font-semibold text-center">Import/Export</span>
               </button>
             </div>
           </tbody>

@@ -7,6 +7,8 @@ import paypal from "../assets/paypal1.png";
 import disney from "../assets/disney.png";
 import intercom from "../assets/intercom.png";
 import user from "../assets/user.png";
+import user2 from "../assets/user2.png";
+import user3 from "../assets/user3.png";
 import evernote from "../assets/evernote.png";
 import mailchamp from "../assets/mailchamp.png";
 import google from "../assets/google.png";
@@ -26,6 +28,7 @@ const categoryStyles = {
   Finance: "text-yellow-800 bg-yellow-100",
   Transportation: "text-yellow-800 bg-yellow-100",
   Publishing: "text-pink-800 bg-pink-100",
+  "Web Services": "text-blue-800 bg-blue-100",
 };
 
 const nextMeetingStyles = {
@@ -42,7 +45,7 @@ const products = [
     id: 1,
     brand: "Wix",
     description: "Develop a Personalized fit to the authorization ",
-    members: [user, user, user, user, user, user],
+    members: [user, user2, user3, user, user2, user3],
     categories: ["Automation"],
     tags: ["#DigitalTransformation", "#onlineShopping"],
     nextMeeting: ["in 30 minutes"],
@@ -54,7 +57,7 @@ const products = [
     brand: "Shopify",
     description:
       "Introdcued a Cloud Based project with your team it would be he best practise",
-    members: [user, user, user, user],
+    members: [user, user2, user3, user],
     categories: ["E-commerce", "B2B"],
     tags: ["#OnlineShopping", "#DigitalMarketing"],
     nextMeeting: ["Tomorrow"],
@@ -65,7 +68,7 @@ const products = [
     id: 3,
     brand: "Mailchimp",
     description: "Develop a mobile app aim to do within 2 weeks ",
-    members: [user, user, user, user],
+    members: [user3, user, user2, user],
     categories: ["SASS", "Mobile"],
     tags: ["#TechInnovation", "#CloudComputing"],
     nextMeeting: ["Tomorrow"],
@@ -76,10 +79,10 @@ const products = [
     id: 4,
     brand: "Paypal",
     description: "This program could included many more things ",
-    members: [user, user, user, user, user, user],
-    categories: ["MarketPlace"],
+    members: [user, user2, user3, user, user3, user2],
+    categories: ["Marketplace"],
     tags: ["#BuySellOnline", "#OnlineMarketing"],
-    nextMeeting: ["Tomorrow"],
+    nextMeeting: ["in 6 hours"],
     imgSrc: paypal,
     messages: 7,
   },
@@ -88,7 +91,7 @@ const products = [
     id: 5,
     brand: "Disney",
     description: "Intoduce a B2B solution for your excisiting customers",
-    members: [user, user],
+    members: [user3, user2],
     categories: ["B2B", "B2C"],
     tags: ["#BusinessPatnerships"],
     nextMeeting: ["No contact"],
@@ -101,7 +104,7 @@ const products = [
     id: 6,
     brand: "Intercom",
     description: "Implementa AI-driven component with your friends",
-    members: [user, user, user, user, user],
+    members: [user2, user, user3, user2, user],
     categories: ["Technology", "SASS"],
     tags: ["#SmartFinance", "#SASSPlatform"],
     nextMeeting: ["in 1 hour"],
@@ -113,20 +116,7 @@ const products = [
     id: 7,
     brand: "Google",
     description: "Offer a comprehensive cycle desgin as soon as possible",
-    members: [
-      user,
-      user,
-      user,
-      user,
-      user,
-      user,
-      user,
-      user,
-      user,
-      user,
-      user,
-      user,
-    ],
+    members: [user3, user2, user3, user2, user3, user2, user, user3, user2, user2, user2 , user2  ],
     categories: ["Finance", "Automation"],
     tags: ["SmartFinance", "#Workflow"],
     nextMeeting: ["in 30 minutes"],
@@ -138,8 +128,8 @@ const products = [
     id: 8,
     brand: "Evernote",
     description: "This could include smart literature part for your system",
-    members: [user, user, user],
-    categories: ["LogisticTech", "UX"],
+    members: [user, user2, user3],
+    categories: ["Transportation"],
     tags: ["#LogisticTech", "#UX"],
     nextMeeting: ["Next month"],
     imgSrc: evernote,
@@ -151,10 +141,10 @@ const products = [
     id: 9,
     brand: "Microsoft",
     description: "Lunch an advisory service to the the industry",
-    members: [user, user, user, user, user],
+    members: [user3, user2, user, user2, user3],
     categories: ["Publishing", "B2C"],
     tags: ["#B2CMarketing", "RetailTele"],
-    nextMeeting: ["Ongoing"],
+    nextMeeting: ["No contact"],
     imgSrc: microsoft,
     messages: 14,
   },
@@ -163,10 +153,10 @@ const products = [
     id: 10,
     brand: "Invision",
     description: "The tool would analys tree component of your computer",
-    members: [user, user],
-    categories: ["Tech"],
+    members: [user, user3],
+    categories: ["Web Services"],
     tags: ["#APIIntegration"],
-    nextMeeting: ["Ongoing"],
+    nextMeeting: ["Next month"],
     imgSrc: invision,
     messages: null,
   },
@@ -219,14 +209,13 @@ const ProductList = ({ searchTerm }) => {
     );
   }, [searchTerm, products]);
 
-
   const productCount = filteredProducts.length || products.length;
-  
+
   return (
     <div className="h-auto mx-2 bg-white rounded-lg font-jakarta">
       {/* body section  */}
 
-      <div>
+      <div className="overflow-hidden overflow-x-auto">
         {filteredProducts.length === 0 ? (
           <p className="mt-2 text-center text-gray-500">Not Found</p>
         ) : (
@@ -235,16 +224,13 @@ const ProductList = ({ searchTerm }) => {
             <thead className="text-gray-400 transition-colors duration-300 bg-white border text-md hover:bg-gray-100">
               {/* Heading table row */}
               <tr>
-                <th
-                  scope="col"
-                  className="px-3 py-3 border border-white w-[23%]"
-                >
+                <th scope="col" className="px-3 py-3 border w-[23%]">
                   <div className="flex items-center justify-between w-full">
                     <div className="flex items-center justify-start space-x-2">
                       <input
                         id="checkbox-all-search"
                         type="checkbox"
-                        className="w-4 h-4 rounded accent-black"
+                        className="w-4 h-4 rounded cursor-pointer accent-black"
                         checked={selectAll}
                         onChange={handleSelectAll}
                       />
@@ -293,7 +279,7 @@ const ProductList = ({ searchTerm }) => {
                         <input
                           id={`checkbox-${product.id}`}
                           type="checkbox"
-                          className="w-4 h-4 rounded accent-black"
+                          className="w-4 h-4 rounded cursor-pointer accent-black"
                           checked={selectedProducts.some(
                             (selected) => selected.id === product.id
                           )}
@@ -322,7 +308,7 @@ const ProductList = ({ searchTerm }) => {
                   </td>
                   <td className="relative px-3 py-3 font-normal border">
                     <div className="relative group">
-                      <span className="block truncate max-w-44">
+                      <span className="block font-semibold truncate max-w-44">
                         {product.description}
                       </span>
                       <div className="absolute hidden w-64 p-2 mb-2 text-sm text-white whitespace-normal transform -translate-x-1/2 bg-gray-800 rounded left-1/2 bottom-full group-hover:block">
@@ -348,7 +334,7 @@ const ProductList = ({ searchTerm }) => {
                       {/* Show the count of additional members if there are more than 7 */}
                       {product.members.length > 7 && (
                         <div
-                          className="absolute flex items-center justify-center w-6 h-6 text-gray-600 bg-gray-300 border rounded-full"
+                          className="absolute flex items-center justify-center w-6 h-6 text-gray-600 bg-gray-300 border rounded-full cursor-pointer"
                           style={{ left: `${14 * 7}px` }}
                         >
                           +{product.members.length - 7}
@@ -413,7 +399,7 @@ const ProductList = ({ searchTerm }) => {
             {/* Calculation and Count Row */}
             <tfoot>
               <tr>
-                <td className="px-3 py-3 border border-white">
+                <td className="px-3 py-3 border">
                   <div className="flex items-center justify-end w-full text-xs">
                     <h1>
                       <span className="font-semibold">{productCount}</span>{" "}
